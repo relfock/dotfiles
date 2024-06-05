@@ -2,7 +2,8 @@
 
 ### Tools needed for ubuntu before installing nvim and tmux
 ``` bash
-sudo apt install stow xsel ripgrep install npm install delve fdclone golang-go -y
+sudo apt install stow xsel ripgrep npm delve fdclone golang-go -y
+sudo apt-get install delve -y
 sudo snap install pyright bash-language-server rustup node clangd  --classic
 rustup default stable
 cargo install tree-sitter-cli
