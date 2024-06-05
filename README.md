@@ -4,7 +4,11 @@
 ``` bash
 sudo apt install stow xsel ripgrep npm delve fdclone golang-go -y
 sudo apt-get install delve -y
-sudo snap install pyright bash-language-server rustup node clangd nvim --classic
+sudo snap install pyright --classic
+sudo snap install bash-language-server --classic
+sudo snap install rustup node --classic
+sudo snap install clangd --classic
+sudo snap install nvim --classic
 rustup default stable
 cargo install tree-sitter-cli
 pip install compiledb
