@@ -57,7 +57,7 @@ require('mason').setup()
 
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'gopls'  }
+local servers = { 'clangd', }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
@@ -166,3 +166,11 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        -- Clear gq set by LSP
+        vim.bo[args.buf].formatexpr = nil
+        -- Set gq to do clang-format
+        vim.bo[args.buf].formatprg = "clang-format-15"
+    end,
+})

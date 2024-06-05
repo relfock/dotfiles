@@ -3,9 +3,10 @@
 alias la=tree
 export LANG=en_US.UTF-8
 export EDITOR=nvim
-export PATH=$PATH:~/.local/bin:~/.fzf/bin/
+export PATH=$PATH:~/.local/bin:~/.fzf/bin:~/.cargo/bin:~/node_modules/.bin
 export USE_DOCKER_IN_GIT_HOOKS=1
 export HIZZ_PRO_PATH=/var/fpga_netlists
+export GOPATH='/usr/bin/go'
 
 # Git
 alias glog="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit"
@@ -18,11 +19,36 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
 alias drun='../docker/hfv-workstation/run-container.sh'
-alias dscons='../docker/hfv-workstation/run-container.sh scons'
 alias dctf_tm='../docker/hfv-workstation/run-container.sh ctf_tm'
 
 alias vt='ssh -CD 1080 andrew@46.162.209.62'
 alias jk='ssh -CJ andrew@46.162.209.62 andrew@10.1.0.11'
+# alias dscons='../docker/hfv-workstation/run-container.sh scons'
+
+function dscons()
+{
+   if [[ "$1" == "test" ]];
+   then
+      # We don't want to update the compilation database when running unit tests
+      $HOME/hfv/docker/hfv-workstation/run-container.sh scons "$@"
+   else
+      COMPILEDB="$HOME/hfv/test_battery/compile_commands.json"
+
+      # Using "compilation_db=True", scons outputs the desired compilation database.
+      $HOME/hfv/docker/hfv-workstation/run-container.sh scons "$@" compilation_db=True
+
+      # Fix the path to /hfv in our compilation database file
+      # We need to use long regex in order to not break paths to modules/hfv/hfv_tst...
+      # Replaces ("directory": "/hfv/) with ("directory": "$HOME/hfv/)
+      sed -i -e "s,\"directory\": \"/hfv/,\"directory\": \"$HOME/hfv/,g" $COMPILEDB
+
+      # Remove 'build/XXX/', where XXX are the "core configs",
+      # scons outputs into distinct folders, which do not match the actual file tree of sources
+      # Expressions that start with (build/) then continues with any number of characters
+      # that are not / and then ends with / are replaced with nothing/removed.
+      sed -i -e 's,build/[^/]*/,,g' $COMPILEDB
+   fi
+}
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
