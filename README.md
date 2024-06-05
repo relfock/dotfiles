@@ -8,6 +8,7 @@ sudo snap install pyright bash-language-server rustup node clangd nvim --classic
 rustup default stable
 cargo install tree-sitter-cli
 pip install compiledb
+sudo npm install -g neovim
 
 # Install tpm pluggin for tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
