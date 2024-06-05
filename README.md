@@ -2,7 +2,7 @@
 
 ### Tools needed for ubuntu before installing nvim and tmux
 ``` bash
-sudo apt install stow xsel ripgrep npm delve fdclone golang-go -y
+sudo apt install stow xsel ripgrep delve fdclone golang-go -y
 sudo apt-get install delve -y
 sudo snap install pyright --classic
 sudo snap install bash-language-server --classic
@@ -12,7 +12,12 @@ sudo snap install nvim --classic
 rustup default stable
 cargo install tree-sitter-cli
 pip install compiledb
-sudo npm install -g neovim
+
+# installs nvm (Node Version Manager)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+# download and install Node.js
+nvm install 20
 
 # Install tpm pluggin for tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

@@ -57,7 +57,7 @@ require('mason').setup()
 
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-local servers = { 'clangd', }
+local servers = { 'clangd', 'pyright', }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
@@ -153,6 +153,9 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = "neorg" },
+  },
+  experimental = {
+    ghost_text = true,
   },
 }
 

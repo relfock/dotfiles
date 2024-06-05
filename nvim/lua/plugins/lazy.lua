@@ -65,6 +65,8 @@ require('lazy').setup({
       "nvim-lua/plenary.nvim",
     },
   },
+
+  'github/copilot.vim',
   'folke/zen-mode.nvim',
   'tpope/vim-obsession',
   -- Tree
