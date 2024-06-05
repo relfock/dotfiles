@@ -4,10 +4,9 @@
 ``` bash
 sudo apt install stow xsel ripgrep npm delve fdclone golang-go -y
 sudo apt-get install delve -y
-sudo snap install pyright bash-language-server rustup node clangd  --classic
+sudo snap install pyright bash-language-server rustup node clangd nvim --classic
 rustup default stable
 cargo install tree-sitter-cli
-npm install tree-sitter-cli
 pip install compiledb
 
 # Install tpm pluggin for tmux
