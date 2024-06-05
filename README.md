@@ -23,7 +23,8 @@ npm install pyright
 sudo snap install clangd  --classic
 pip install compiledb
 
-``` bash
+# Install tpm pluggin for tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Install latest fzf since some tmux plugins doesn't work with the old version
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
