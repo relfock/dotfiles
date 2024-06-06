@@ -6,7 +6,7 @@ sudo apt install stow xsel ripgrep delve fdclone golang-go -y
 sudo apt-get install delve -y
 sudo snap install pyright --classic
 sudo snap install bash-language-server --classic
-sudo snap install rustup node --classic
+sudo snap install rustup --classic
 sudo snap install clangd --classic
 sudo snap install nvim --classic
 rustup default stable
@@ -26,8 +26,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
+npm install -g neovim
+
 ### Install with stow:
-```bash
-stow --target .
+stow .
 ```
 
