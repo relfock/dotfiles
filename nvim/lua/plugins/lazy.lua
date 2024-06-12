@@ -21,7 +21,7 @@ require('lazy').setup({
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" }
   },
-  { 
+  {
     "mistricky/codesnap.nvim", 
     build = "make",
   },
@@ -50,20 +50,6 @@ require('lazy').setup({
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
-  },
-  "preservim/vim-pencil",
-  {
-    "sourcegraph/sg.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
-  {
-    "epwalsh/obsidian.nvim",
-    version = "*",  -- recommended, use latest release instead of latest commit
-    lazy = true,
-    ft = "markdown",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
   },
 
   'github/copilot.vim',
@@ -95,25 +81,10 @@ require('lazy').setup({
       require("nvim-tree").setup {}
     end,
   },
-  -- Database
-  'kristijanhusak/vim-dadbod-ui',
-  'kristijanhusak/vim-dadbod-completion',
-  {
-    "tpope/vim-dadbod",
-    opt = true,
-    requires = {
-      "kristijanhusak/vim-dadbod-ui",
-      "kristijanhusak/vim-dadbod-completion",
-    },
-    config = function()
-      require("config.dadbod").setup()
-    end,
-  },
 
   'ThePrimeagen/git-worktree.nvim',
   "tpope/vim-surround",
-  'xiyaowong/nvim-transparent',
-  { 
+  {
     'numToStr/FTerm.nvim',
     config = function()
     local map = vim.api.nvim_set_keymap
@@ -206,6 +177,10 @@ require('lazy').setup({
             },
             opts = { skip = true },
           }
+        },
+        presets = {
+          bottom_search = false,
+          command_palette = false,
         },
       })
     end,
