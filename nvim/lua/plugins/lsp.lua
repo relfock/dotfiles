@@ -75,6 +75,22 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- Disable errors for undefined variables and missing imports
+require('lspconfig')['pyright'].setup {
+  on_attach = on_attach,
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = "off",
+        diagnosticSeverityOverrides = {
+          reportUndefinedVariable = "none",
+          reportMissingImports = "none",
+        }
+      }
+    }
+  }
+}
+
 -- Turn on lsp status information
 require('fidget').setup()
 
@@ -176,4 +192,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- Set gq to do clang-format
         vim.bo[args.buf].formatprg = "clang-format-15"
     end,
+})
+
+vim.filetype.add({
+  pattern = {
+    ['.*SCons.*'] = 'python',
+    ['.*.ld.*'] = 'ld',
+  },
 })
