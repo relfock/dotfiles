@@ -39,6 +39,16 @@ vim.keymap.set("n", "<leader>ee", "<cmd>GoIfErr<cr>",
   {silent = true, noremap = true}
 )
 
--- Example keybindings
+-- Set floating terminal bindings
 vim.keymap.set('n', '<space>gt', '<CMD>lua require("FTerm").toggle()<CR>')
 vim.keymap.set('t', '<space>gt', '<CMD>lua require("FTerm").toggle()<CR>')
+
+-- Remap navigation keys in the command mode
+vim.keymap.set('c', '<C-a>', '<Home>')
+vim.keymap.set('c', '<C-e>', '<End>')
+vim.keymap.set('c', '<C-p>', '<Up>')
+vim.keymap.set('c', '<C-n>', '<Down>')
+vim.keymap.set('c', '<C-b>', '<Left>')
+vim.keymap.set('c', '<C-f>', '<Right>')
+vim.keymap.set('c', '<M-b>', '<S-Left>')
+vim.keymap.set('c', '<M-f>', '<S-Right>')

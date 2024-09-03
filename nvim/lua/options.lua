@@ -42,3 +42,6 @@ vim.o.conceallevel=2
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Set make program to scons
+vim.o.makeprg='dscons_nvim'
+vim.o.shellcmdflag='-ic'
