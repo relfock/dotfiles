@@ -55,7 +55,7 @@ function dscons_nvim()
   COMPILEDB="$HOME/hfv/test_battery/compile_commands.json"
 
   # Using "compilation_db=True", scons outputs the desired compilation database.
-  $HOME/hfv/docker/hfv-workstation/run-container.sh scons "$@" compilation_db=True | ansi2txt | sed -e "s,/hfv/,$HOME/hfv/,g" | sed -e 's,^,DUT/fw/,g'
+  $HOME/hfv/docker/hfv-workstation/run-container.sh scons "$@" compilation_db=True | ansi2txt | sed -e "s,/hfv/,$HOME/hfv/,g" | sed -e 's,^,,g'
 
   # Fix the path to /hfv in our compilation database file
   # We need to use long regex in order to not break paths to modules/hfv/hfv_tst...
