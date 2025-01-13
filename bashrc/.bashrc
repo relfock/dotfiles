@@ -46,7 +46,7 @@ function dscons()
       # scons outputs into distinct folders, which do not match the actual file tree of sources
       # Expressions that start with (build/) then continues with any number of characters
       # that are not / and then ends with / are replaced with nothing/removed.
-      sed -i -e 's,build/[^/]*/,,g' $COMPILEDB
+      sed -i -e 's/build\/[^/]*\/[^/]*\///g' $COMPILEDB
    fi
 }
 
@@ -66,7 +66,7 @@ function dscons_nvim()
   # scons outputs into distinct folders, which do not match the actual file tree of sources
   # Expressions that start with (build/) then continues with any number of characters
   # that are not / and then ends with / are replaced with nothing/removed.
-  sed -i -e 's,build/[^/]*/,,g' $COMPILEDB
+  sed -i -e 's/build\/[^/]*\/[^/]*\///g' $COMPILEDB
 }
 
 # FZF
